@@ -1,0 +1,11 @@
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div id="sessions_form">
+  <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", id: "e_field" %><%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %><%= f.submit "Log in", id: "login_submit" %><br />
+        <%= link_to "Forgot your password?", new_password_path(resource_name), id: "forgot_password" %>
+      <% end -%>
+  </div>
+</div>
+<% end %>
