@@ -49,6 +49,35 @@
       }
     }
   }
+
+  #user_dd_container {
+    position: relative;
+    float: right;
+    margin-right: 20px;
+  }
+  #user_dropdown {
+    float: right;
+     display: none;
+     position: absolute;
+     right: 40px;
+     left: auto;
+     background-color: white;
+     width: 150px;
+  }
+  #user_dropdown li{
+    a {
+      text-align: center;
+    }
+  }
+  #user_dd_container:hover #user_dropdown {
+    display: block;
+    li {
+      a {
+        font-size: 18px;
+        color: black;
+      }
+    }
+  }
 }
 
 #user_pics_container {

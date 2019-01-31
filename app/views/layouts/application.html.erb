@@ -10,12 +10,15 @@
   </head>
 
   <div id="user_nav_container">
+    <% if signed_in? %>
     <nav>
       <h2>FC</h2>
       <%= form_tag(users_search_path, method: "get", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search"%>
         <%= submit_tag "Search" %>
       <% end %>
+
+
       <ul>
         <li>
           <button type="button">
@@ -46,8 +49,23 @@
             <%= image_tag("icons8-notification-60.png", style: "width:40px;height:40px;")%>
           <% end %>
         </li>
+        <ul id="user_dd_container">
+          <li>
+            <%= link_to "#" do %>
+              <%= image_tag("icons8-sort-down-60.png", style: "width:30px;height:30px;")%>
+              <% end %>
+              <ul id="user_dropdown">
+                <li>
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                </li>
+              </ul>
+          </li>
+        </ul>
       </ul>
     </nav>
+    <% else %>
+    <div id="landing_nav"><h1 id="main_header">FaceBook Clone</h1><%= render "users/sessions/new", id: "render_sessions" %></div>
+    <% end %>
   </div>
 
 
