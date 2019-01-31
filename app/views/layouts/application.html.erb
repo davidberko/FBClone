@@ -9,6 +9,48 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <div id="user_nav_container">
+    <nav>
+      <h2>FC</h2>
+      <%= form_tag(users_search_path, method: "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search"%>
+        <%= submit_tag "Search" %>
+      <% end %>
+      <ul>
+        <li>
+          <button type="button">
+          <%= link_to profile_path(@user.id) do %>
+            <%= image_tag @user.profile_picture.variant(resize: "50x50") %>
+            <% end %>
+          <%= @user.full_name%>
+          </button>
+        </li>
+        <li>
+          <button type="button"><a href="#">Home</a></button>
+        </li>
+        <li>
+          <button type="button"><a href="#">Find Friends</a></button>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <%= image_tag("icons8-add-user-group-man-man-60.png", style: "width:40px;height:40px;")%>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <%= image_tag("icons8-facebook-messenger-60.png", style: "width:40px;height:40px;")%>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <%= image_tag("icons8-notification-60.png", style: "width:40px;height:40px;")%>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
   <body>
     <%= yield %>
   </body>

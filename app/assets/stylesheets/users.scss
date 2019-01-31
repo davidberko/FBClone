@@ -5,10 +5,74 @@
 
 /* Profile Page */
 
-#cover_photo {
-  margin-left: 25%;
+#user_nav_container {
+  background-color: #3D4EE1;
+  h2 {
+    color: white;
+  }
+  ul {
+    padding-bottom: 10px;
+    li:first-child {
+      margin-left: 50%;
+      button {
+        background-color: #3D4EE1;
+        border-color: #3D4EE1;
+        color: white;
+        font-size: 14px;
+        height: 50px;
+      }
+    }
+    li {
+      padding-right: 20px;
+      list-style: none;
+      display: inline-block;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+      button {
+        background-color: #3D4EE1;
+        border-color: #3D4EE1;
+        color: white;
+        font-size: 14px;
+        height: 50px;
+        border-right-style: groove;
+        border-right-width: thin;
+        border-right-color: black;
+      }
+      button:hover {
+        background-color: #184A89;
+      }
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
 }
-#cover_photo_pic {
-  width: 100%;
+
+#user_pics_container {
   height: 400px;
+  font-size: 18px;
+  #cover_photo {
+    margin-left: 25%;
+    position: absolute;
+
+  }
+  #cover_photo_pic {
+    width: 100%;
+    height: 400px;
+    z-index: -2;
+    position: absolute;
+  }
+  #profile_pic {
+    margin-top: 350px;
+    position: absolute;
+  }
+  #profile_pic_photo {
+    margin-top: 300px;
+    z-index: -1;
+    border-radius: 50%;
+  }
+
 }
