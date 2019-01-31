@@ -1,2 +1,27 @@
+<div id="user_nav_container">
+  <h2>FC</h2>
+  <%= form_tag(users_search_path, method: "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search"%>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
 
+<div id="cover_photo_container">
+
+    <div>
+      <div>
+      <%= link_to edit_cover_photo_path(@user.id) do %>
+        <%= image_tag("icons8-picture-48.png", id: "cover_photo") %>
+      <% end %>
+      <%= image_tag(@user.cover_photo.variant(resize: "1000x200"), id: "cover_photo_pic") %>
+      </div>
+      <div>
+        <%= link_to edit_profile_pic_path(@user.id) do %>
+          <%= image_tag("icons8-screenshot-30.png")%>
+        <% end %>
+        <%= image_tag(@user.profile_picture.variant(resize: "100x100")) %>
+      </div>
+    </div>
+
+</div>
 <%= current_user.email %>

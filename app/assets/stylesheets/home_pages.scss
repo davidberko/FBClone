@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* Main Header */
+
 #landing_nav {
   display: inline-block;
   width: 100%;
@@ -51,73 +53,122 @@
 }
 
 
-#signup_header {
-  margin-top: 100px;
-}
+/* Body */
 
-#free_header {
-}
+#main_L_content_container {
+  display: inline-block;
+  width: 100%;
 
-#signup_container {
-  float: right;
-  margin-right: 10%;
-
-  #first_name {
-    margin-right: 10px;
-    width: 200px;
-    height: 30px;
-    padding-left: 10px;
-  }
-  #last_name {
-    margin-right: 10px;
-    width: 200px;
-    height: 30px;
-    padding-left: 10px;
-  }
-  .email_field {
-    margin-top: 10px;
-    input {
-      width: 425px;
-      height: 30px;
-      padding-left: 10px;
+  #content_page_left {
+    float: left;
+    width: 50%;
+    #CPL_header1 {
+      text-align: center;
+      font-size: 30px;
+      margin-top: 50px;
+      margin-bottom: 20px;
     }
-  }
-  .password_field {
-    margin-top: 10px;
-    input {
-      width: 425px;
-      height: 30px;
-      padding-left: 10px;
-    }
-  }
-  .confirmation_field {
-    margin-top: 10px;
-    input {
-      width: 425px;
-      height: 30px;
-      padding-left: 10px;
-    }
-  }
-  .birthday_field {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .actions {
-    p {
-      font-size: 11px;
-      color: #AEB4AC;
-      a {
-        text-decoration: none;
-        color: blue;
+    #span1 {
+      font-size: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      img {
+        margin-right: 10px;
+        margin-left: 110px;
       }
     }
-    input {
-      border-radius: 5px;
+    #span2 {
       font-size: 20px;
-      width: 150px;
-      height: 30px;
-      color: white;
-      background-color: #57B82A;
+      padding-bottom: 20px;
+
+      img {
+        margin-right: 10px;
+        margin-left: 110px;
+      }
+    }
+    #span3 {
+      font-size: 20px;
+      padding-bottom: 20px;
+
+      img {
+        margin-right: 10px;
+        margin-left: 110px;
+      }
+    }
+  }
+
+  #S_Form_right {
+    float: right;
+    width: 50%;
+    #signup_header {
+      margin-top: 100px;
+    }
+
+    #free_header {
+    }
+
+    #signup_container {
+      float: right;
+      margin-right: 10%;
+
+      #first_name {
+        margin-right: 10px;
+        width: 200px;
+        height: 30px;
+        padding-left: 10px;
+      }
+      #last_name {
+        margin-right: 10px;
+        width: 200px;
+        height: 30px;
+        padding-left: 10px;
+      }
+      .email_field {
+        margin-top: 10px;
+        input {
+          width: 425px;
+          height: 30px;
+          padding-left: 10px;
+        }
+      }
+      .password_field {
+        margin-top: 10px;
+        input {
+          width: 425px;
+          height: 30px;
+          padding-left: 10px;
+        }
+      }
+      .confirmation_field {
+        margin-top: 10px;
+        input {
+          width: 425px;
+          height: 30px;
+          padding-left: 10px;
+        }
+      }
+      .birthday_field {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .actions {
+        p {
+          font-size: 11px;
+          color: #AEB4AC;
+          a {
+            text-decoration: none;
+            color: blue;
+          }
+        }
+        input {
+          border-radius: 5px;
+          font-size: 20px;
+          width: 150px;
+          height: 30px;
+          color: white;
+          background-color: #57B82A;
+        }
+      }
     }
   }
 }

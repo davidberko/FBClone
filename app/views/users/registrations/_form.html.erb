@@ -25,7 +25,7 @@
   </div>
   <div class="birthday_field">
     <%= f.label :birthday %><br />
-    <%= f.date_select :birthday %>
+    <%= f.date_select :birthday, start_year: 2018, end_year: 1900 %>
   </div>
   <div class="gender_field">
     <%= f.radio_button :female, 'female' %> Female
