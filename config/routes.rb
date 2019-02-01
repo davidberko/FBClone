@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  get 'users/new'
-  get 'home_pages/index'
+
   devise_for :users, controllers: {
           sessions: 'users/sessions',
           registrations: 'users/registrations',
         }
+
+  resources :users do
+    resources :posts
+  end
+
   root to: 'home_pages#index'
   get 'users/:id', to: 'users#show', as: 'profile'
   get 'users_search', to: 'users#index'
