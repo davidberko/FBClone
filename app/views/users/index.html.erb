@@ -1,6 +1,16 @@
 <div>
 </div>
 <h2>People</h2>
-<% @users.each do |u| %>
-  <%= u.full_name%>
+
+<% @users_search.each do |u| %>
+
+  <% if u.profile_picture.attached? %>
+    <div>
+      <%= image_tag(u.profile_picture.variant(resize: "100x100")) %><%= link_to u.full_name, profile_path(u) %>
+    </div><br />
+  <% else %>
+    <div>
+      <%= image_tag("icons8-person-60.png") %><%= link_to u.full_name, profile_path(u) %>
+    </div><br />
+  <% end %>
 <% end %>

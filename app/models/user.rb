@@ -6,11 +6,10 @@ class User < ApplicationRecord
 
   has_one_attached :profile_picture
   has_one_attached :cover_photo
-  has_many :posts 
+  has_many :posts
 
   def self.search(search)
-    where("first_name ILIKE ?", "%#{search}%")
-    where("last_name ILIKE ?", "%#{search}%")
+    where("concat_ws(' ', first_name, last_name) ILIKE ?", "%#{search.squish}%") 
   end
 
   def full_name

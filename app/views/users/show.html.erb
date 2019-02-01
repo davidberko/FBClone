@@ -1,16 +1,26 @@
 
 <div id="cover_photo_container">
 
+
       <div id="user_pics_container">
-      <%= link_to edit_cover_photo_path(@user.id) do %>
-        <%= image_tag("icons8-picture-48.png", id: "cover_photo") %>
-      <% end %>
-      <%= image_tag(@user.cover_photo.variant(resize: "1000x200"), id: "cover_photo_pic") %>
+        <%= link_to edit_cover_photo_path(@user.id) do %>
+          <%= image_tag("icons8-picture-48.png", id: "cover_photo") %>
+        <% end %>
+        <% if @user.cover_photo.attached? %>
+          <%= image_tag(@user.cover_photo.variant(resize: "1000x200"), id: "cover_photo_pic") %>
+        <% else %>
+          <%= image_tag("icons8-picture-100.png", style: "width1000px;height:200px;") %>
+        <% end %>
 
         <%= link_to edit_profile_pic_path(@user.id) do %>
           <%= image_tag("icons8-screenshot-30.png", id: "profile_pic")%>
         <% end %>
+        <% if @user.profile_picture.attached? %>
+
         <%= image_tag(@user.profile_picture.variant(resize: "200x200"), id: "profile_pic_photo") %>
+        <% else %>
+        <%= image_tag("icons8-person-60.png") %>
+        <% end %>
         <b><%= @user.full_name %></b><br />
 
       </div>
