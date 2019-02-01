@@ -1,0 +1,63 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#profile_pic_photo {
+  border-radius: 50%;
+  margin-left: 30%;
+}
+
+#new_post_container {
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 20%;
+  display: inline-block;
+  div {
+
+    img {
+      float: left;
+      border-radius: 50%;
+    }
+    p {
+      float: right;
+      textarea {
+        width: 150px;
+        font-size: 18px;
+        padding: 4px;
+      }
+    }
+  }
+}
+
+#status_feed {
+  margin-top: 50px;
+  margin-left: 30%;
+  margin-right: 25%;
+  width: 45%;
+  display: block;
+  p {
+    color: black;
+  }
+
+  #each_post {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-style: groove;
+    border-width: medium;
+    border-color: #B4B9C1;
+    div {
+      width: 100%;
+      border-bottom-style: groove;
+      border-bottom-color: #B4B9C1;
+      border-bottom-width: medium;
+    }
+    img {
+      float: left;
+    }
+    #post_content {
+      font-size: 18px;
+      padding-top: 10px;
+    }
+  }
+}

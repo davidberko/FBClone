@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_picture
   has_one_attached :cover_photo
+  has_many :posts 
 
   def self.search(search)
     where("first_name ILIKE ?", "%#{search}%")
