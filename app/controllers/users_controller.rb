@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     if params[:search]
-      @users = User.search(params[:search])
+      @users_search = User.search(params[:search])
     else
       @users = User.all
     end

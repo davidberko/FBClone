@@ -10,7 +10,7 @@
   </head>
 
   <div id="user_nav_container">
-    <% if signed_in? %>
+  <% if signed_in? %>
     <nav>
       <h2>FC</h2>
       <%= form_tag(users_search_path, method: "get", id: "search-form") do %>
@@ -22,14 +22,18 @@
       <ul>
         <li>
           <button type="button">
-          <%= link_to profile_path(@user.id) do %>
-            <%= image_tag @user.profile_picture.variant(resize: "50x50") %>
+          <%= link_to profile_path(current_user.id) do %>
+            <% if current_user.profile_picture.attached? %>
+              <%= image_tag current_user.profile_picture.variant(resize: "50x50") %>
+            <% else %>
+              <%= image_tag("icons8-person-60.png") %>
             <% end %>
-          <%= @user.full_name%>
+          <% end %>
+          <%= current_user.full_name%>
           </button>
         </li>
         <li>
-          <button type="button"><%= link_to "Home", user_posts_path(@user.id) %></button>
+          <button type="button"><%= link_to "Home", user_posts_path(current_user.id) %></button>
         </li>
         <li>
           <button type="button"><a href="#">Find Friends</a></button>
@@ -53,7 +57,7 @@
           <li>
             <%= link_to "#" do %>
               <%= image_tag("icons8-sort-down-60.png", style: "width:30px;height:30px;")%>
-              <% end %>
+            <% end %>
               <ul id="user_dropdown">
                 <li>
                   <%= link_to "Log out", destroy_user_session_path, method: :delete %>
