@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'comments/new'
   devise_for :users, controllers: {
           sessions: 'users/sessions',
           registrations: 'users/registrations',
@@ -7,6 +8,14 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :posts
+  end
+
+  resources :posts do
+    resources :comments
+  end
+
+  resources :comments do
+    resources :comments
   end
 
   root to: 'home_pages#index'
