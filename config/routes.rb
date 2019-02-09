@@ -13,6 +13,14 @@ Rails.application.routes.draw do
     resources :friend_requests
   end
 
+  resources :posts do
+    resources :comments
+  end
+
+  resources :comments do
+    resources :comments
+  end
+
   root to: 'home_pages#index'
   get 'users/:id', to: 'users#show', as: 'profile'
   get 'users_search', to: 'users#index'
