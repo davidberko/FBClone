@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
 
   get 'comments/new'
+
   devise_for :users, controllers: {
           sessions: 'users/sessions',
           registrations: 'users/registrations',
         }
 
   resources :users do
+    resources :friendships
     resources :posts
+    resources :friend_requests
   end
 
   resources :posts do

@@ -1,0 +1,34 @@
+
+<div id="cover_photo_container">
+
+
+      <div id="user_pics_container">
+        <% if @friendship.user.cover_photo.attached? %>
+          <%= image_tag(@friendship.user.cover_photo.variant(resize: "1000x200"), id: "cover_photo_pic") %>
+        <% else %>
+          <%= image_tag("icons8-picture-100.png", style: "width1000px;height:200px;") %>
+        <% end %>
+
+        <% if @friendship.user.profile_picture.attached? %>
+          <%= image_tag(f.profile_picture.variant(resize: "200x200"), id: "profile_pic_photo") %>
+        <% else %>
+          <%= image_tag("icons8-person-60.png") %>
+        <% end %>
+        <b><%= @friendship.user.full_name %></b><br />
+        You are friends with <%= @friendship.user.full_name %>
+        <%= link_to "Unfriend", user_friendship_path(@friendship.friend, @friendship.id), method: :delete %>
+
+      </div>
+      <h2><%= "#{@friendship.user.first_name}'s Friends" %>
+      <div id="friend_list">
+        <% @friendship.user.friends.each do |f| %>
+          <% if f.profile_picture.attached? %>
+
+          <%= image_tag(f.profile_picture.variant(resize: "200x200"), id: "profile_pic_photo") %>
+          <% else %>
+          <%= image_tag("icons8-person-60.png") %>
+          <% end %>
+          <%= link_to f.full_name, user_friendship_path(f, @friendship.id) %>
+        <% end %>
+      </div>
+</div>
