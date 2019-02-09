@@ -1,0 +1,9 @@
+Your requests
+
+<% @incoming.each do |f| %>
+  <%= f.user.full_name %><%= link_to "accept friend request", user_friend_request_path(current_user.id, f.id), method: :put %>
+<% end %>
+Your pending invitations
+<% @outgoing.each do |f| %>
+  <%= f.friend.full_name %>
+<% end %>

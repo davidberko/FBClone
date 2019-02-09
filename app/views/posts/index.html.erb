@@ -1,9 +1,14 @@
 <%= render 'posts/new' %>
 <div id="status_feed">
   <% @posts.each do |p| %>
+  <% if p.user.profile_picture.attached? %>
+
     <div id="each_post">
       <div>
-        <%= image_tag(@user.profile_picture.variant(resize: "40x40"), id: "profile_pic_photo") %>
+          <%= image_tag(p.user.profile_picture.variant(resize: "40x40"), id: "profile_pic_photo") %>
+        <% else %>
+          <%= image_tag("icons8-person-60.png") %>
+        <% end %>
         <p><b><%= p.user.full_name %></b> said on <%= p.created_at.strftime("%B %wth, %l:%M:%S %p") %></p>
       </div>
       <p id="post_content"><%= p.content %></p>

@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
+
   devise_for :users, controllers: {
           sessions: 'users/sessions',
           registrations: 'users/registrations',
         }
 
   resources :users do
+    resources :friendships
     resources :posts
+    resources :friend_requests
   end
 
   root to: 'home_pages#index'
