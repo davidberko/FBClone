@@ -1,10 +1,12 @@
 <div id="new_post_container">
   <div>
-  <%= image_tag(@user.profile_picture.variant(resize: "100x100")) %>
-  <%= form_with model: @post do |f| %>
-    <%= f.hidden_field :user_id %>
-    <p><%= f.text_area :content, placeholder: "What's on your mind, #{@user.first_name}?" %><br /><%= f.submit "Share" %></p>
-
+    <% if @user.profile_picture.attached? %>
+      <%= image_tag(@user.profile_picture.variant(resize: "100x100")) %>
+    <% else %>
+      <%= image_tag("icons8-person-60.png") %>
+    <% end %>
+    <%= form_with model: @post do |f| %>
+      <p><%= f.text_area :content, placeholder: "What's on your mind, #{@user.first_name}?" %><br /><%= f.submit "Share" %></p>
     <% end %>
   </div>
 </div>

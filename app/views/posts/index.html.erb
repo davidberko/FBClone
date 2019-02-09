@@ -5,13 +5,31 @@
     <div id="each_post">
       <div>
         <% if @user.profile_picture.attached? %>
+<<<<<<< HEAD
          <%= image_tag(@user.profile_picture.variant(resize: "40x40"), id: "profile_pic_photo") %>
        <% else %>
          <%= image_tag("icons8-person-60.png") %>
        <% end %>
          <p><b><%= p.user.full_name %></b> said on <%= p.created_at.strftime("%B %wth, %l:%M:%S %p") %></p>
+=======
+          <%= image_tag(@user.profile_picture.variant(resize: "40x40"), id: "profile_pic_photo") %>
+        <% else %>
+          <%= image_tag("icons8-person-60.png") %>
+        <% end %>
+          <p><b><%= p.user.full_name %></b> said on <%= p.created_at.strftime("%B %wth, %l:%M:%S %p") %></p>
+>>>>>>> 3b3411c2230e68c9cfccf8a00ac4ea7ad8aee1d9
       </div>
       <p id="post_content"><%= p.content %></p>
+      <h3>Comments</h3>
+
+        <%= form_for [p, Comment.new] do |f| %>
+        <%= f.text_area :body, placeholder: "Add a comment" %><br/>
+        <%= f.submit "Add Comment" %>
+        <% end %>
+
+        <ul>
+          <%= render(partial: 'comments/comment', collection: p.comments) %>
+        </ul>
     </div>
     <% end %>
 </div>
