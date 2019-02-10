@@ -16,6 +16,20 @@ class CommentsController < ApplicationController
       end
     end
 
+    def like
+      @commentable = Comment.find(params[:id])
+      @commentable.likes << current_user unless @commentable.likes.include?(current_user)
+      redirect_to request.referrer
+    end
+
+    def unlike
+      @commentable = Comment.find(params[:id])
+      if @commentable.likes.include?(current_user)
+        @commentable.likes.delete(current_user)
+      end
+      redirect_to request.referrer
+    end
+
     private
 
     def comment_params
