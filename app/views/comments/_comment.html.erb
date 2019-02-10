@@ -1,15 +1,40 @@
-<li>
-  <%= comment.user.full_name %> said
-  <b><%= comment.body %></b> -
-  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
-  <%= form_for [comment, Comment.new] do |f| %>
-      <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply"  %>
-      <% end %>
+<body>
+  <li>
+    <%= comment.user.full_name %> said
+    <b><%= comment.body %></b> -
+    <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
 
-  <ul>
-      <%= render partial: 'comments/comment', collection: comment.comments %>
-  </ul>
+    <% if comment.likes.includes(current_user) %>
+      <%= link_to "like", like_comment_path(comment), method: :put, class: "like" %>
+    <% else %>
+      <%= link_to "unlike", unlike_comment_path(comment), method: :put, class: "like" %>
+    <% end %>
+    <%= comment.likes.count %>
+    <span class="user_likes"><%= comment.likes.pluck(:first_name, :last_name).join(" ") %></span>
 
-</li>
+
+    <%= form_for [comment, Comment.new] do |f| %>
+        <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+        <%= f.submit "Reply"  %>
+        <% end %>
+
+    <ul>
+        <%= render partial: 'comments/comment', collection: comment.comments %>
+    </ul>
+
+  </li>
+  <script>
+    (function() {
+      $('.user_likes').hide()
+  			$('.like').mouseover(function (e) {
+  				$(e.target).siblings(".user_likes").show()
+  			})
+  			$('.like').mouseleave(function (e) {
+  				link = $(e.target)
+  				link.siblings(".user_likes").hide()
+  			})
+    })();
+  </script>
+</body>

@@ -16,6 +16,9 @@ class User < ApplicationRecord
   has_many :friend_requests
   has_many :pending_friends, through: :friend_requests, source: :friend
 
+  has_and_belongs_to_many :likes, join_table: :posts_users, association_foreign_key: :post_id, class_name: "Post"
+  has_and_belongs_to_many :likes, join_table: :posts_users, association_foreign_key: :comment_id, class_name: "Comment"
+
   def self.search(search)
     where("concat_ws(' ', first_name, last_name) ILIKE ?", "%#{search.squish}%")
   end

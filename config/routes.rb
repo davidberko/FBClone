@@ -14,11 +14,23 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
+    member do
+      put "like" => "posts#like"
+      put "unlike" => "posts#unlike"
+    end
     resources :comments
+      member do
+        put "like" => "comments#like"
+        put "unlike" => "comments#unlike"
+      end
   end
 
   resources :comments do
     resources :comments
+      member do
+        put "like" => "comments#like"
+        put "unlike" => "comments#unlike"
+      end
   end
 
   root to: 'home_pages#index'
