@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_user, only: [:new, :index, :show]
   def index
-    @posts = @user.posts
+    @user_posts = @user.posts
+    
+    @user.friends.each do |f|
+    @posts = f.posts
+    end
   end
 
   def show

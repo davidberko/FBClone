@@ -24,6 +24,6 @@ class CommentsController < ApplicationController
 
     def find_commentable
       @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
-      @commentable = Story.find_by_id(params[:story_id]) if params[:story_id]
+      @commentable = Post.find_by_id(params[:post_id]) if params[:post_id]
     end
   end

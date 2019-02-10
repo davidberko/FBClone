@@ -41,7 +41,7 @@
         <li>
           <%= link_to user_friend_requests_path(current_user) do %>
             <%= image_tag("icons8-add-user-group-man-man-60.png", style: "width:40px;height:40px;")%>
-          <% end %>
+          <% end %><%= current_user.friend_requests.count %>
         </li>
         <li>
           <%= link_to "#" do %>
