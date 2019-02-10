@@ -33,6 +33,7 @@
 
     <div id="each_post">
       <div>
+
         <% if p.user.profile_picture.attached? %>
 
           <%= image_tag(p.user.profile_picture.variant(resize: "40x40"), id: "profile_pic_photo") %>
