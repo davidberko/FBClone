@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_02_07_022939) do
-=======
-ActiveRecord::Schema.define(version: 2019_02_05_030458) do
->>>>>>> 3b3411c2230e68c9cfccf8a00ac4ea7ad8aee1d9
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +36,16 @@ ActiveRecord::Schema.define(version: 2019_02_05_030458) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-<<<<<<< HEAD
+  create_table "comments", force: :cascade do |t|
+    t.integer "commentable_id"
+    t.bigint "user_id"
+    t.string "commentable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "body"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "friend_requests", force: :cascade do |t|
     t.string "user_type"
     t.bigint "user_id"
@@ -56,16 +61,6 @@ ActiveRecord::Schema.define(version: 2019_02_05_030458) do
     t.integer "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-=======
-  create_table "comments", force: :cascade do |t|
-    t.integer "commentable_id"
-    t.bigint "user_id"
-    t.string "commentable_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "body"
-    t.index ["user_id"], name: "index_comments_on_user_id"
->>>>>>> 3b3411c2230e68c9cfccf8a00ac4ea7ad8aee1d9
   end
 
   create_table "posts", force: :cascade do |t|
@@ -94,10 +89,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_030458) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-<<<<<<< HEAD
-  add_foreign_key "friend_requests", "users", column: "friend_id"
-=======
   add_foreign_key "comments", "users"
->>>>>>> 3b3411c2230e68c9cfccf8a00ac4ea7ad8aee1d9
+  add_foreign_key "friend_requests", "users", column: "friend_id"
   add_foreign_key "posts", "users"
 end

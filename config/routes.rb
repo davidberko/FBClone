@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
   get 'comments/new'
-<<<<<<< HEAD
 
-=======
->>>>>>> 3b3411c2230e68c9cfccf8a00ac4ea7ad8aee1d9
   devise_for :users, controllers: {
           sessions: 'users/sessions',
           registrations: 'users/registrations',

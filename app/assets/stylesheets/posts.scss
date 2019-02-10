@@ -40,6 +40,29 @@
   p {
     color: black;
   }
+  #user_post {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-style: groove;
+    border-width: medium;
+    border-color: #B4B9C1;
+    div {
+      width: 100%;
+      border-bottom-style: groove;
+      border-bottom-color: #B4B9C1;
+      border-bottom-width: medium;
+    }
+    img {
+      float: left;
+      width: 30px;
+      height: 30px;
+    }
+    #post_content {
+      font-size: 18px;
+      padding-top: 10px;
+    }
+  }
 
   #each_post {
     width: 100%;
