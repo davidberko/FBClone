@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :friend_requests
   end
 
+  resources :friendships do
+    resources :posts 
+  end
+
   resources :posts do
     member do
       put "like" => "posts#like"

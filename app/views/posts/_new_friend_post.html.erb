@@ -1,0 +1,12 @@
+<div id="new_post_container">
+  <div>
+    <% if current_user.profile_picture.attached? %>
+      <%= image_tag(current_user.profile_picture.variant(resize: "100x100")) %>
+    <% else %>
+      <%= image_tag("icons8-person-60.png") %>
+    <% end %>
+    <%= form_with model: @post do |f| %>
+      <p><%= f.text_area :content, placeholder: "Write on #{current_user.friends.pluck(:first_name).join(" ")}'s timeline" %><br /><%= f.submit "Share" %></p>
+    <% end %>
+  </div>
+</div>

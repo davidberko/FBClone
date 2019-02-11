@@ -10,7 +10,7 @@
         <% end %>
 
         <% if @friendship.user.profile_picture.attached? %>
-          <%= image_tag(f.profile_picture.variant(resize: "200x200"), id: "profile_pic_photo") %>
+          <%= image_tag(@friendship.user.profile_picture.variant(resize: "200x200"), id: "profile_pic_photo") %>
         <% else %>
           <%= image_tag("icons8-person-60.png") %>
         <% end %>
@@ -19,6 +19,7 @@
         <%= link_to "Unfriend", user_friendship_path(@friendship.friend, @friendship.id), method: :delete %>
 
       </div>
+
       <h2><%= "#{@friendship.user.first_name}'s Friends" %>
       <div id="friend_list">
         <% @friendship.user.friends.each do |f| %>
@@ -31,4 +32,8 @@
           <%= link_to f.full_name, user_friendship_path(f, @friendship.id) %>
         <% end %>
       </div>
+      <%= render 'posts/new_friend_post' %>
+
+      <%= render "friend_posts" %>
+      <%= render "user_posts" %>
 </div>

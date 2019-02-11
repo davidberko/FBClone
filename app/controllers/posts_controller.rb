@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_user, only: [:new, :index, :show]
+  config.before_filter do
+       params.permit!
+   end
+
   def index
     @user_posts = @user.posts
 
@@ -13,13 +17,14 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @friend = Friendship.find(params[:id])
   end
 
   def create
     @post = Post.create(post_params)
     @post.user_id = current_user.id
     if @post.save!
-      redirect_to user_posts_path(current_user.id)
+      redirect_to request.referrer
     end
   end
 
@@ -47,6 +52,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.permit(:post, :user_id, :content)
+    params.require(:post).permit(:content, :user_id)
   end
 end

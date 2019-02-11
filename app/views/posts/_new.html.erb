@@ -5,7 +5,7 @@
     <% else %>
       <%= image_tag("icons8-person-60.png") %>
     <% end %>
-    <%= form_with model: @post do |f| %>
+    <%= form_for Post.new do |f| %>
       <p><%= f.text_area :content, placeholder: "What's on your mind, #{@user.first_name}?" %><br /><%= f.submit "Share" %></p>
     <% end %>
   </div>

@@ -3,40 +3,7 @@
 <body>
 <%= render 'posts/new' %>
 <div id="status_feed">
-
-  <% @user_posts.each do |p| %>
-
-    <div id="user_post">
-      <div>
-        <% if p.user.profile_picture.attached? %>
-
-          <%= image_tag(p.user.profile_picture.variant(resize: "40x40"), id: "profile_pic_photo") %>
-        <% else %>
-          <%= image_tag("icons8-person-60.png") %>
-        <% end %>
-          <p><b><%= p.user.full_name %></b> said on <%= p.created_at.strftime("%B %wth, %l:%M:%S %p") %></p>
-
-      </div>
-      <p id="post_content"><%= p.content %></p>
-      <%= link_to "like", like_post_path(p), method: :put, class: "like" %>
-      <%= link_to "unlike", unlike_post_path(p), method: :put, class: "like" %>
-      <%= p.likes.count %>
-      <span class="user_likes"><%= p.likes.pluck(:first_name, :last_name).join(" ") %></span>
-
-      <h3>Comments</h3>
-
-        <%= form_for [p, Comment.new] do |f| %>
-        <%= f.text_area :body, placeholder: "Add a comment" %><br/>
-        <%= f.submit "Add Comment" %>
-        <% end %>
-
-        <ul>
-          <%= render(partial: 'comments/comment', collection: p.comments) %>
-        </ul>
-      </div>
-
-        <% end %>
-
+<% if !current_user.friends == nil %>
 
   <% @posts.each do |p| %>
 
@@ -70,6 +37,42 @@
         </ul>
     </div>
     <% end %>
+<% else %>
+  <% @user_posts.each do |p| %>
+
+    <div id="user_post">
+      <div>
+        <% if p.user.profile_picture.attached? %>
+
+          <%= image_tag(p.user.profile_picture.variant(resize: "40x40"), id: "profile_pic_photo") %>
+        <% else %>
+          <%= image_tag("icons8-person-60.png") %>
+        <% end %>
+          <p><b><%= p.user.full_name %></b> said on <%= p.created_at.strftime("%B %wth, %l:%M:%S %p") %></p>
+
+      </div>
+      <p id="post_content"><%= p.content %></p>
+      <%= link_to "like", like_post_path(p), method: :put, class: "like" %>
+      <%= link_to "unlike", unlike_post_path(p), method: :put, class: "like" %>
+      <%= p.likes.count %>
+      <span class="user_likes"><%= p.likes.pluck(:first_name, :last_name).join(" ") %></span>
+
+      <h3>Comments</h3>
+
+        <%= form_for [p, Comment.new] do |f| %>
+        <%= f.text_area :body, placeholder: "Add a comment" %><br/>
+        <%= f.submit "Add Comment" %>
+        <% end %>
+
+        <ul>
+          <%= render(partial: 'comments/comment', collection: p.comments) %>
+        </ul>
+      </div>
+
+        <% end %>
+
+<% end %>
+
 </div>
 <script>
   (function() {
