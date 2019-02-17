@@ -3,6 +3,7 @@
 <body>
 <%= render 'posts/new' %>
 <div id="status_feed">
+  <%= render "friendships/friend_posts" %>
 <% if !current_user.friends == nil %>
 
   <% @posts.each do |p| %>

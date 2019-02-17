@@ -6,7 +6,7 @@
       <%= image_tag("icons8-person-60.png") %>
     <% end %>
     <%= form_with model: @post do |f| %>
-      <p><%= f.text_area :content, placeholder: "Write on #{current_user.friends.pluck(:first_name).join(" ")}'s timeline" %><br /><%= f.submit "Share" %></p>
+      <p><%= f.text_area :content, placeholder: "Write on #{@friendship.user.first_name}'s timeline" %><br /><%= f.submit "Share" %></p>
     <% end %>
   </div>
 </div>

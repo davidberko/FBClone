@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
     @user.friends.each do |f|
     @posts = f.posts
+    @friend_posts = @posts
+    @friendship = f.friendships
     end
   end
 
