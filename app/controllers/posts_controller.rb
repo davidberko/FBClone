@@ -6,11 +6,9 @@ class PostsController < ApplicationController
 
   def index
     @user_posts = @user.posts
-
-    @user.friends.each do |f|
-    @posts = f.posts
-    @friend_posts = @posts
-    @friendship = f.friendships
+    @user = User.find(params[:user_id])
+    @friendship_posts = @user.friends.each do |f|
+      @fp = f.friendship_posts
     end
   end
 
@@ -19,7 +17,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @friend = Friendship.find(params[:id])
   end
 
   def create
@@ -47,6 +44,7 @@ class PostsController < ApplicationController
     redirect_to request.referrer
   end
 
+
   private
 
   def set_user
@@ -54,6 +52,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content, :user_id)
+    params.permit(:post, :content, :user_id)
   end
 end

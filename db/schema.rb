@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_10_181953) do
+ActiveRecord::Schema.define(version: 2019_02_12_234601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,22 @@ ActiveRecord::Schema.define(version: 2019_02_10_181953) do
     t.index ["user_type", "user_id"], name: "index_friend_requests_on_user_type_and_user_id"
   end
 
+  create_table "friendship_posts", force: :cascade do |t|
+    t.bigint "friend_id"
+    t.bigint "friendship_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["friend_id"], name: "index_friendship_posts_on_friend_id"
+    t.index ["friendship_id"], name: "index_friendship_posts_on_friendship_id"
+  end
+
+  create_table "friendship_posts_users", force: :cascade do |t|
+    t.integer "friend_id"
+    t.integer "friendship_post_id"
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
@@ -97,5 +113,8 @@ ActiveRecord::Schema.define(version: 2019_02_10_181953) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
   add_foreign_key "friend_requests", "users", column: "friend_id"
+  add_foreign_key "friendship_posts", "friendships"
+  add_foreign_key "friendship_posts", "users"
+  add_foreign_key "friendship_posts", "users", column: "friend_id"
   add_foreign_key "posts", "users"
 end

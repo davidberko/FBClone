@@ -33,4 +33,12 @@ class User < ApplicationRecord
   def friends?(friend)
      self.friends.includes(friend)
   end
+
+  def gender
+    if self.female == true
+      print = "her"
+    else
+      print = "his"
+    end
+  end
 end

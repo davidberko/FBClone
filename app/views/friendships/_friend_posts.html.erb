@@ -1,5 +1,6 @@
 <div id="friend_timeline">
   <% @friend_posts.each do |p| %>
+
   <div>
     <% if p.user.profile_picture.attached? %>
 
@@ -7,7 +8,7 @@
     <% else %>
       <%= image_tag("icons8-person-60.png") %>
     <% end %>
-      <p><b><%= p.user.full_name %></b>  <%= p.created_at.strftime("%B %wth, %l:%M:%S %p") %></p>
+      <p><b><%= p.user.full_name %></b> wrote on their wall <%= p.created_at.strftime("%B %wth, %l:%M:%S %p") %></p>
 
   </div>
   <p id="post_content"><%= p.content %></p>

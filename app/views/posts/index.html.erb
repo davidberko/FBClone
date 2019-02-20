@@ -49,7 +49,7 @@
         <% else %>
           <%= image_tag("icons8-person-60.png") %>
         <% end %>
-          <p><b><%= p.user.full_name %></b> said on <%= p.created_at.strftime("%B %wth, %l:%M:%S %p") %></p>
+          <p><b><%= p.user.full_name %></b> wrote on <%= p.user.gender %> wall <%= p.created_at.strftime("%B %wth, %l:%M:%S %p") %></p>
 
       </div>
       <p id="post_content"><%= p.content %></p>
